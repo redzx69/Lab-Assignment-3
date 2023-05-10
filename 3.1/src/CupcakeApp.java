@@ -40,10 +40,5 @@ public class CupcakeApp {
 
         // Display total price
         System.out.println("Total price of all cupcakes: RM" + totalPrice);
-
-        
-
-
-        
     }
 }
