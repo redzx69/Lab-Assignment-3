@@ -29,7 +29,8 @@ public class CupcakeApp {
         // Calculate and display price of cupcakes in dozens
         System.out.println("");
         for (int i = 0; i < size; i++) {
-            System.out.println("Price of " + cupcake[i].getName() + " in dozens: RM" + cupcake[i].priceInDozen(cupcake[i].getCode()));
+            System.out.printf("Price of %s in dozens: RM%.2f", cupcake[i].getName(), cupcake[i].priceInDozen(cupcake[i].getCode()));
+            System.out.println("");
         }
 
         // Calculate and display price of all cupcakes
@@ -39,6 +40,6 @@ public class CupcakeApp {
         }
 
         // Display total price
-        System.out.println("Total price of all cupcakes: RM" + totalPrice);
+        System.out.printf("\nTotal price: RM%.2f\n", totalPrice);
     }
 }

@@ -65,7 +65,7 @@ public class Cupcake {
                 System.out.println("Invalid code");
                 break;
         }
-        price = price * (1 - rate/100.0);
+        price = 12 * price * (1 - rate/100.0);
         return price;
     }
 }
