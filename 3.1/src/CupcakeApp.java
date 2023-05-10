@@ -1,0 +1,49 @@
+import java.util.Scanner;
+
+public class CupcakeApp {
+    public static void main(String[] args) {
+        
+        Scanner in = new Scanner(System.in);
+        System.out.print("Enter number of cupcakes: ");
+        int size = in.nextInt();
+        
+        // Create an array of Cupcake objects
+        Cupcake[] cupcake = new Cupcake[size];
+        
+        // Get data from user
+        for (int i = 0; i < size; i++) {
+            System.out.println("\nCupcake " + (i + 1));
+            System.out.print("Enter name: ");
+            String name = in.next();
+            System.out.print("Enter code: ");
+            String code = in.next();
+            in.nextLine();
+            System.out.print("Enter price: RM");
+            double price = in.nextDouble(); 
+
+            // Store data onto array
+            cupcake[i] = new Cupcake(name, code, price);
+        }
+        in.close(); // Close scanner
+
+        // Calculate and display price of cupcakes in dozens
+        System.out.println("");
+        for (int i = 0; i < size; i++) {
+            System.out.println("Price of " + cupcake[i].getName() + " in dozens: RM" + cupcake[i].priceInDozen(cupcake[i].getCode()));
+        }
+
+        // Calculate and display price of all cupcakes
+        double totalPrice = 0.0;
+        for (int i = 0; i < size; i++) {
+            totalPrice += cupcake[i].getPrice();
+        }
+
+        // Display total price
+        System.out.println("Total price of all cupcakes: RM" + totalPrice);
+
+        
+
+
+        
+    }
+}
