@@ -66,7 +66,7 @@ public class Fruit {
         
 
 
-        return price;
+        return totalPrice;
     }
 
     public String toString() {
