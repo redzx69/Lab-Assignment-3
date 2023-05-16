@@ -22,7 +22,6 @@ public class FruitApp {
             else //imported fruits
                 totalSaleImportedFruit += fruitList[i].calcTotalPrice();
             }
-
         }
         System.out.println("Local fruit with highest price\nFruit name: "+highestPriceFruit+"\nPrice: RM"+highestPrice);
         System.out.println("Total sale of imported fruits: RM" + totalSaleImportedFruit);
