@@ -58,19 +58,22 @@ public class Fruit {
     }
 
     public boolean isLocal() {
-        return this.equals("local");
+        return type.equals("local");
     }
 
     public double calcTotalPrice() {
-
-        
-
+        double totalPrice = 0.0;
+        if (isLocal()) {
+            totalPrice = weight * price * 0.97; // 3% discount
+        } else {
+            totalPrice = weight * price;
+        }
 
         return totalPrice;
     }
 
     public String toString() {
 
-        return 
+        return String.format("Fruit name: %s\nType: %s\nWeight: %fkg\nPrice: %.2f", getName()+getType()+getWeight()+getPrice());
     }
 }
