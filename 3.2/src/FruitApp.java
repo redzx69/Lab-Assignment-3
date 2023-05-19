@@ -1,29 +1,56 @@
+import java.util.Scanner;
+
 public class FruitApp {
-
     public static void main(String[] args) {
-        
-        Fruit[] fruitList = new Fruit[5];
 
-        fruitList[0] = new Fruit("Apple", "local", 1.5, 5.5);
-        fruitList[1] = new Fruit("Orange", "imported", 2.5, 8.5);
-        fruitList[2] = new Fruit("Banana", "local", 1.0, 4.5);
-        fruitList[3] = new Fruit("Mango", "imported", 2.0, 10.5);
-        fruitList[4] = new Fruit("Pineapple", "local", 1.5, 6.5);
+        //ask user for array size
+        Scanner in = new Scanner(System.in);
+        Scanner in1 = new Scanner(System.in);
+        System.out.print("Enter the number of fruits: ");
+        int size = in1.nextInt();
+        Fruit[] fruitList = new Fruit[size];
+        System.out.println();
 
-        double highestPrice = 0.0;
-        double totalSaleImportedFruit = 0.0;
-        String highestPriceFruit = "";
-        for (int i = 0; i < 5; i++) {
-            if (fruitList[i].getType().equals("local")) { //local fruits
-                if (fruitList[i].getPrice() > highestPrice) {
-                    highestPrice = fruitList[i].getPrice();
-                    highestPriceFruit = fruitList[i].getName(); //display the name of local fruit which has highest price
-                }
-            else //imported fruits
-                totalSaleImportedFruit += fruitList[i].calcTotalPrice();
-            }
+        //input fruit information
+        for (int i = 0; i < size; i++) {
+            System.out.print("Enter the fruit name: ");
+            String name = in.nextLine();
+            System.out.print("Enter the fruit type (1-2). 1-Imported 2-Local : ");
+            String type = in.nextLine();
+            if (type.equals("1"))
+                type = "imported";
+            else
+                type = "local";
+            System.out.print("Enter the fruit weight (kg): ");
+            double weight = in1.nextDouble();
+            System.out.print("Enter the fruit price-per-kg: RM");
+            double price = in1.nextDouble();
+            
+            //store data
+            fruitList[i] = new Fruit(name, type, weight, price);
+            System.out.println();
         }
-        System.out.println("Local fruit with highest price\nFruit name: "+highestPriceFruit+"\nPrice: RM"+highestPrice);
-        System.out.println("Total sale of imported fruits: RM" + totalSaleImportedFruit);
+        System.out.println("--------------------------------------------------\n"); //input output separator
+
+        String highestPriceLocalFruitName = "";
+        double highestPriceLocalFruitPrice = 0.0;
+        double totalSaleImportedFruits = 0.0;
+
+        for(int i = 0; i < size; i++){
+            if (fruitList[i].isLocal()) { //local 
+                if (fruitList[i].getPrice() > highestPriceLocalFruitPrice) {  //find local fruit with highest price
+                    highestPriceLocalFruitName = fruitList[i].getName();
+                    highestPriceLocalFruitPrice = fruitList[i].getPrice();
+                }
+            }
+            else { //imported 
+                totalSaleImportedFruits += fruitList[i].calcTotalPrice(); //accumulate total sale of imported fruits
+            }
+            System.out.println(fruitList[i]);
+        }
+        System.out.printf("Local fruit with highest price: %s (RM%.2f)", highestPriceLocalFruitName, highestPriceLocalFruitPrice);
+        System.out.printf("%nTotal sale of imported fruits: RM%.2f%n", totalSaleImportedFruits);
+        in.close(); 
+        in1.close();
     }
 }

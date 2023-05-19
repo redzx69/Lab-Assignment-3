@@ -74,6 +74,6 @@ public class Fruit {
 
     public String toString() {
 
-        return String.format("Fruit name: %s\nType: %s\nWeight: %fkg\nPrice: %.2f", getName()+getType()+getWeight()+getPrice());
+        return String.format("Fruit: %s\nType: %s\nWeight: %.2fkg\nPrice: RM%.2f\n", getName(), getType(), getWeight(), getPrice());
     }
 }
