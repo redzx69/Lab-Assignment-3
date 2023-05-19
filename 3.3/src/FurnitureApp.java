@@ -64,7 +64,7 @@ public class FurnitureApp {
         
         for (int i = 0; i < size; i++) {
             if (furnitureList[i].getMaterial().equals("Wood") //find highest price of wood furniture
-            && furnitureList[i].calcPriceFurniture() == highestPriceOfWoodFurniture) {
+            && furnitureList[i].calcPriceFurniture() > highestPriceOfWoodFurniture) {
                 highestPriceOfWoodFurniture = furnitureList[i].calcPriceFurniture();
             }
 
